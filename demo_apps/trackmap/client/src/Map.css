@@ -1,0 +1,70 @@
+path {
+	/*stroke: black;*/
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	fill-opacity: 0.9;
+}
+
+path:hover {
+	stroke: white;
+	stroke-width: 1px;
+	fill: steelblue;
+	cursor: pointer;
+}
+
+.person:hover{
+	stroke: steelblue;
+	stroke-width: 1px;
+	fill: none;
+	cursor: pointer;
+}
+
+.person{
+	/*stroke: white;*/
+	stroke-width: 0.8px;
+	stroke-dasharray: 5;
+	stroke-dashoffset: 10;	
+	animation: dash 40s linear 1s infinite;
+}
+
+@keyframes dash {
+	from {
+		stroke-dashoffset: 100; /*1000*/
+	}
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+.Canvas:hover{
+	stroke: black !important ;
+	stroke-width: 2px !important ;
+	fill: #000;
+	cursor: default;
+}
+
+#mapDiv {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	height: 100vh;
+	width: 100vw;
+	text-align: center
+}
+
+svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.tooltip {
+	position: absolute;
+	z-index:0;
+	color:#FFF;
+	background:#000;
+	border:2px solid white;
+	border-radius:5px;
+	padding:5px;
+	visibility:hidden;
+}

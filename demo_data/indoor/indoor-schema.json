@@ -1,0 +1,53 @@
+{
+  "properties": {
+    "idbin": {
+      "type": "string",
+      "enum": [
+        "bin1",
+        "bin2",
+        "bin3"
+      ]
+    },
+    "person_start": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 365
+        }
+      },
+      "description": "start"
+    },
+    "person_end": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 365
+        }
+      },
+      "description": "end"
+    },
+    "person_path": {
+      "type": "array",
+      "items": {
+        "properties": {
+          "x": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "lateral"
+          },
+          "y": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "vertical"
+          }
+        }
+      }
+    }
+  }
+}

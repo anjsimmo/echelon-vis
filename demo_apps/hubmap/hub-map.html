@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#chart {
+    height: 100%;
+}
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@0.7.3/dist/leaflet.css" />
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://unpkg.com/leaflet@0.7.3/dist/leaflet.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="hub-chart.js"></script>
+<body>
+
+<div id="chart"></div>
+
+<script>
+// conversion factors
+var timeScale = 0.5; // time (s)     -> width  (px)
+//var flowScale = 4; // flow (veh/s) -> height (px)
+var flowScale = 8;
+//var badColor = 'red';
+//var goodColor = 'green';
+
+// tiles
+var mapboxId = 'anjsimmo.b5fcdf28';
+var mapboxAccessToken = 'pk.eyJ1IjoiYW5qc2ltbW8iLCJhIjoiLTQ4S0gyRSJ9.G_kMuyMcQ4mY6J9Ru1uESQ';
+var tiles = "https://{s}.tiles.mapbox.com/v4/" + mapboxId + "/{z}/{x}/{y}.png?access_token=" + mapboxAccessToken;
+
+// returns default value if property not defined
+function getWithDefault(obj, prop, def=0) {
+  if (obj) {
+    if (obj[prop]) {
+      return obj[prop];
+    }
+  }
+  return def;
+}
+
+// setup chart
+var chart = hubChart()
+    .tileLayer(tiles)
+    .attribution('Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, Imagery &copy; <a href="http://mapbox.com">Mapbox</a>')
+    //.mapCenter([-37.8198,145.0414]) // Swinburne University
+    .mapCenter([0,0])
+    .mapZoom(2)
+    .hubRadius(function(d) {return d.size * timeScale; })
+    .armWidth(function(d) {return d.size * timeScale; })
+    .armLength1(function(d) {return getWithDefault(d.arm1, 'y') * flowScale; })
+    .armLength2(function(d) {return getWithDefault(d.arm2, 'y') * flowScale; })
+    .armColor1(function(d) {return getWithDefault(d.arm1, 'color', 'black'); })
+    .armColor2(function(d) {return getWithDefault(d.arm2, 'color', 'black'); })
+    .hubColor(function(d) {return d.color; });
+
+// data
+//var date = '2014-06-02';
+//var time = '08-00-00';
+//var dataUrl = 'data/network_' + date + '_' + time + '.json';
+var dataUrl = 'rendered.json';
+
+// Empty JSON data to use before real data loaded
+// and as a means to flush out any old data.
+var emptyObj = {"level1":[]};
+
+// load JSON data
+function loadJson(data) {
+  console.log(data);
+  d3.select('#chart')
+      .datum(data)
+      .call(chart);
+}
+
+// draw chart
+function loadData(dataUrl) {
+  d3.json(dataUrl).then(function(data) {
+    loadJson(emptyObj);
+    loadJson(data);
+  });
+}
+
+// Usage: https://example.com/?load=rendered_traffic.json
+// https://developer.mozilla.org/en-US/docs/Web/API/URL/searchParams
+let params = (new URL(document.location)).searchParams;
+let loadparam = params.get('load');
+
+console.log(loadparam);
+
+if (loadparam) {
+  loadData(loadparam);
+} else {
+  // TODO: Default visualisation path
+  loadJson(emptyObj);
+}
+</script>
+

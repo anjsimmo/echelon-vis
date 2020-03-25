@@ -1,0 +1,14 @@
+#!/bin/bash
+
+SCHEMA=$(readlink -f "$1")
+GRAMMAR=$(readlink -f "$2")
+OLD_DIR=$(pwd)
+DIR=$(dirname "$0")
+cd "$DIR"
+mkdir -p tmp
+
+./schema2asp.py "$SCHEMA" > tmp/data_schema.lp
+./grammar2asp.py "$GRAMMAR" > tmp/target_schema.lp
+clingo asp/_all.lp tmp/data_schema.lp tmp/target_schema.lp --outf=2 > tmp/solution.json 2>/dev/null
+./asp2table.py tmp/solution.json > "$OLD_DIR"/generated_notation.html
+./asp2json.py tmp/solution.json > "$OLD_DIR"/generated_transformation.json

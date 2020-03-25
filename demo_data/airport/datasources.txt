@@ -1,0 +1,2 @@
+https://github.com/vega/vega-tutorials/blob/master/tutorials/airports/data/flights-airport.csv
+https://github.com/vega/vega/blob/master/docs/data/airports.csv

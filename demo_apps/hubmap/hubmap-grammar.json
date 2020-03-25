@@ -1,0 +1,54 @@
+{
+  "properties": {
+    "level1": {
+      "type": "array",
+      "items": {
+        "properties": {
+          "texture": {"type": "texture"},
+          "color": {"type": "color"},
+          "size": {"type": "size"},
+          "shape": {"type": "shape"},
+          "brightness": {"type": "brightness"},
+          "orientation": {"type": "orientation"},
+          "x": {"type": "x", "description": "lateral"},
+          "y": {"type": "y", "description": "vertical"},
+          "level2": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "texture": {"type": "texture"},
+                "color": {"type": "color"},
+                "size": {"type": "size"},
+                "shape": {"type": "shape"},
+                "brightness": {"type": "brightness"},
+                "orientation": {"type": "orientation"},
+                "x": {"type": "x", "description": "angle"},
+                "arm1": {
+                  "type": "object",
+                  "properties": {
+                    "y": {"type": "y", "description": "magnitude"},
+                    "color": {"type": "color"},
+                    "texture": {"type": "texture"},
+                    "brightness": {"type": "brightness"},
+                    "orientation": {"type": "orientation"}
+                  }
+                },
+                "arm2": {
+                  "type": "object",
+                  "properties": {
+                    "y": {"type": "y", "description": "magnitude"},
+                    "color": {"type": "color"},
+                    "texture": {"type": "texture"},
+                    "brightness": {"type": "brightness"},
+                    "orientation": {"type": "orientation"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

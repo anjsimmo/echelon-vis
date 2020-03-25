@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Takes input from standard in and sends to to server
+#
+# (Animal tracking data already contains code to send to server,
+#  so this script doesn't actually need to do anything)
+while read -r line
+do
+  echo "$line"
+done < "${1:-/dev/stdin}"

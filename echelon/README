@@ -1,0 +1,35 @@
+           _          _                             
+  ___  ___| |__   ___| | ___  _ __    /\     
+ / _ \/ __| '_ \ / _ \ |/ _ \| '_ \  |/\|  /\  
+|  __/ (__| | | |  __/ | (_) | | | |      |/\|  /\        
+ \___|\___|_| |_|\___|_|\___/|_| |_|           |/\|      
+
+  Visualisation Recommender System v0.2
+
+
+1. GENERATE A NOTATION
+
+echelon/generate_notation <data_schema> <target_schema>
+
+
+2. USE NOTATION (embed this in output visualisation system)
+
+echelon/use_notation <raw_data> <generated_transformation>
+
+
+STATIC DEMOS:
+
+http://localhost:8000/hub-map.html?load=out/traffic-rendered.json
+http://localhost:8000/hub-map.html?load=out/airport-rendered.json
+http://localhost:5000/?notation=out/albatross-transformation.json&load=out/albatross-data.json
+
+
+INTERACTIVE DEMOS:
+
+http://localhost:5000/?notation=out/albatross-transformation.json&socket=localhost:3000
+demo_data/animals/analyse.py
+
+http://localhost:5000/?notation=out/indoor-transformation.json&socket=localhost:3000
+demo_data/indoor/stream demo_data/indoor/track_alice
+demo_data/indoor/stream demo_data/indoor/track_bob
+

@@ -1,0 +1,35 @@
+{
+  "properties": {
+    "marker_start": {
+      "type": "object",
+      "properties": {
+        "color": {"type": "color"},
+        "size": {"type": "size"},
+        "shape": {"type": "shape"}
+      },
+      "description": "start"
+    },
+    "marker_end": {
+      "type": "object",
+      "properties": {
+        "color": {"type": "color"},
+        "size": {"type": "size"},
+        "shape": {"type": "shape"}
+      },
+      "description": "end"
+    },
+    "texture": {"type": "texture"},
+    "color": {"type": "color"},
+    "shape": {"type": "shape"},
+    "path": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {"type": "x", "description": "lateral"},
+          "y": {"type": "y", "description": "vertical"}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+curl -X POST "http://localhost:3000/api/tracking/adduser" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"id\": 0, \"name\": \"Alice\", \"location\": [ { \"x\": 50, \"y\": 50, \"timestamp\": \"2019-10-26T16:18:00Z\" } ]}"
+
+curl -X POST "http://localhost:3000/api/tracking/adduserlocation" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"id\": 0, \"name\": \"Alice\", \"location\": { \"x\": 150, \"y\": 150, \"timestamp\": \"2019-10-26T16:19:00Z\" }}"
+
+curl -X POST "http://localhost:3000/api/tracking/adduserlocation" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"id\": 0, \"name\": \"Alice\", \"location\": { \"x\": 200, \"y\": 200, \"timestamp\": \"2019-10-26T16:20:00Z\" }}"
+
+curl -X POST "http://localhost:3000/api/tracking/adduserlocation" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"id\": 0, \"name\": \"Alice\", \"location\": { \"x\": 300, \"y\": 300, \"timestamp\": \"2019-10-26T16:21:00Z\" }}"
+
+curl -X POST "http://localhost:3000/api/tracking/adduserlocation" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"id\": 0, \"name\": \"Alice\", \"location\": { \"x\": 300, \"y\": 200, \"timestamp\": \"2019-10-26T16:22:00Z\" }}"
+
+curl -X POST "http://localhost:3000/api/tracking/adduserlocation" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"id\": 0, \"name\": \"Alice\", \"location\": { \"x\": 200, \"y\": 200, \"timestamp\": \"2019-10-26T16:23:00Z\" }}"
+
+curl -X POST "http://localhost:3000/api/tracking/adduserlocation" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"id\": 0, \"name\": \"Alice\", \"location\": { \"x\": 500, \"y\": 220, \"timestamp\": \"2019-10-26T16:24:00Z\" }}"
+
+curl -X POST "http://localhost:3000/api/tracking/adduserlocation" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"id\": 0, \"name\": \"Alice\", \"location\": { \"x\": 500, \"y\": 420, \"timestamp\": \"2019-10-26T16:25:00Z\" }}"
+

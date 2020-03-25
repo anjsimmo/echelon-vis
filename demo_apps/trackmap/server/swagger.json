@@ -1,0 +1,213 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Map visualization API",
+    "description": "A map visualization API which can be called to display various visualizations."
+  },
+  "tags": [
+    {
+      "name": "Live user tracking",
+      "description": "Track the user movement in real time."
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/tracking/adduser": {
+      "post": {
+        "tags": [
+          "Live user tracking"
+        ],
+        "summary": "Add a new user to start tracking.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "User",
+            "description": "User that we want to start tracking.",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          },
+          "400": {
+            "description": "Error. Data not correct."
+          }
+        }
+      }
+    },
+    "/api/tracking/addusers": {
+      "post": {
+        "tags": [
+          "Live user tracking"
+        ],
+        "summary": "Add multiple users to start tracking.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Users",
+            "description": "Users that we want to start tracking.",
+            "schema": {
+              "$ref": "#/definitions/users"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/users"
+            }
+          },
+          "400": {
+            "description": "Error. Data not correct."
+          }
+        }
+      }
+    },
+    "/api/tracking/adduserlocation": {
+      "post": {
+        "tags": [
+          "Live user tracking"
+        ],
+        "summary": "Add new locations to existing users.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "User",
+            "description": "Location that we want to add to a user.",
+            "schema": {
+              "$ref": "#/definitions/userlocation"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/userlocation"
+            }
+          },
+          "400": {
+            "description": "Error. Data not correct."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "location": {
+      "type": "object",
+      "properties": {
+        "longitude": {
+          "type": "number"
+        },
+        "latitude": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "longitude",
+        "latitude"
+      ]
+    },
+    "user": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "55027",
+            "55028",
+            "55029"
+          ]
+        },
+        "albatros_start": {
+          "type": "object",
+          "properties": {
+            "time": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 365
+            }
+          },
+          "description": "start"
+        },
+        "albatross_end": {
+          "type": "object",
+          "properties": {
+            "year": {
+              "type": "string",
+              "enum": [
+                "yr2007",
+                "yr2008"
+              ]
+            }
+          },
+          "description": "end"
+        },
+        "location": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/location"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "albatros_start",
+        "albatros_end",
+        "location"
+      ]
+    },
+    "users": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/user"
+      }
+    },
+    "userlocation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "location": {
+          "$ref": "#/definitions/location"
+        }
+      },
+      "required": [
+        "id",
+        "location"
+      ]
+    }
+  }
+}

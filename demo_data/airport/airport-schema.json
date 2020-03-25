@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "definitions": {
+    "flight": {
+      "type": "object",
+      "properties": {
+        "heading": { "description": "angular", "type": "number", "minimum": 0, "maximum": 360 },
+        "details": {
+          "type": "object",
+          "properties": {
+            "numflights": { "type": "number", "minimum": 0, "maximum": 10000 }
+          }
+        }
+      }
+    },
+    "airport": {
+      "properties": {
+        "flights": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/flight" }
+        },
+        "latitude": { "description": "latitude", "type": "number", "minimum": -90, "maximum": 90 },
+        "longitude": { "description": "longitude", "type": "number", "minimum": -180, "maximum": 180 },
+        "totalflights": { "type": "number", "minimum": 0, "maximum": 100000 }
+      }
+    }
+  },
+  "properties": {
+    "airports": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/airport" }
+    }
+  }
+}

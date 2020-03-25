@@ -1,0 +1,47 @@
+{
+  "properties": {
+    "name": {
+      "type": "string",
+      "enum": [
+        "55027",
+        "55028",
+        "55029"
+      ]
+    },
+    "albatross_info": {
+      "type": "object",
+      "properties": {
+        "release_date": {
+          "type": "string",
+          "enum": [
+            "y2007m08d30",
+            "y2007m08d31"
+          ]
+        }
+      }
+    },
+    "extras": {
+      "type": "object",
+      "properties": {}
+    },
+    "location": {
+      "type": "array",
+      "items": {
+        "properties": {
+          "longitude": {
+            "type": "number",
+            "minimum": 170,
+            "maximum": 370,
+            "description": "lateral"
+          },
+          "latitude": {
+            "type": "number",
+            "minimum": -50,
+            "maximum": -10,
+            "description": "vertical"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$id": "https://austrafficwatch.com/traffic_vis/data/hubmap_schema_v1.json",
+  "definitions": {
+    "arm": {
+      "type": "object",
+      "properties": {
+        "angle": { "description": "angular", "type": "number", "minimum": 0, "maximum": 360 },
+        "t": { "type": "number", "minimum": 0, "maximum": 130 },
+        "details1": {
+          "type": "object",
+          "properties": {
+            "sat": { "type": "string",
+                     "enum": ["undersaturated", "oversaturated"] }
+          }
+        },
+        "details2": {
+          "type": "object",
+          "properties": {
+            "flow": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        }
+      }
+    },
+    "hub": {
+      "properties": {
+        "arms": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/arm" }
+        },
+        "t": { "type": "number", "minimum": 0, "maximum": 130 },
+        "lat": { "description": "latitude", "type": "number", "minimum": -90, "maximum": 90 },
+        "lng": { "description": "longitude", "type": "number", "minimum": -180, "maximum": 180 }
+      }
+    }
+  },
+  "properties": {
+    "hubs": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/hub" }
+    }
+  }
+}

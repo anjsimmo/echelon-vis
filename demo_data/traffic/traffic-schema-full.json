@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$id": "https://austrafficwatch.com/traffic_vis/data/hubmap_schema_v1.json",
+  "definitions": {
+    "arm": {
+      "type": "object",
+      "properties": {
+        "angle": { "description": "angular", "type": "number", "minimum": 0, "maximum": 360 },
+         "ds": { "type": "number", "minimum": 0 },
+         "flow": { "type": "number", "minimum": 0 },
+         "id": { "title": "arm_id", "description": "id", "type": "integer", "minimum": 0 },
+         "maxflow": { "type": "number", "minimum": 0 },
+         "pt": { "type": "number", "minimum": 0 }
+      }
+    },
+    "hub": {
+      "properties": {
+        "arms": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/arm" }
+        },
+        "ct": { "type": "number", "minimum": 0 },
+        "id": { "title": "hub_id", "description": "id", "type": "integer", "minimum": 0 },
+        "lat": { "description": "latitude", "type": "number", "minimum": -90, "maximum": 90 },
+        "lng": { "description": "longitude", "type": "number", "minimum": -180, "maximum": 180 },
+        "name": { "type": "string" }
+      }
+    }
+  },
+  "properties": {
+    "hubs": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/hub" }
+    }
+  }
+}

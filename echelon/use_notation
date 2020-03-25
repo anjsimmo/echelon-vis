@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+var fs = require('fs');
+var vismod = require('./visualmodel.js')
+var argv = process.argv;
+
+var dataPath = argv[2];
+var notationFullPath = argv[3];
+
+var notationFullStr = fs.readFileSync(notationFullPath).toString();
+var dataStr = fs.readFileSync(dataPath).toString();
+
+var notationFull = JSON.parse(notationFullStr);
+var data = JSON.parse(dataStr);
+
+var result = vismod.bind(notationFull, data)
+console.log(JSON.stringify(result));
