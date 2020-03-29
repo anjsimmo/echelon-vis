@@ -4,7 +4,7 @@ Echelon is a visualisation recommendation tool that implements Moody's Physics o
 
 # Getting Started
 
-To make it easy to get started, a [Docker image](https://hub.docker.com/repository/docker/anjsimmo/echelon) is provided with all of the dependencies pre-installed. First install [Docker](https://www.docker.com/), then run the following commands:
+To make it easy to get started, a [Docker image](https://hub.docker.com/r/anjsimmo/echelon/) is provided with all of the dependencies pre-installed. First install [Docker](https://www.docker.com/), then run the following commands:
 
 ```
 docker pull anjsimmo/echelon
