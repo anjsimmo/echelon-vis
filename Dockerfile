@@ -36,6 +36,9 @@ WORKDIR /app
 
 COPY . .
 
+RUN cd /app/demo_apps/trackmap/client && npm install
+RUN cd /app/demo_apps/trackmap/server && npm install
+
 EXPOSE 8000
 EXPOSE 5000
 EXPOSE 3000
