@@ -4,16 +4,14 @@ Echelon is a visualisation recommendation tool that implements Moody's Physics o
 
 # Getting Started
 
-Echelon depends on Python (managed using [Conda](https://docs.conda.io/en/latest/) environments) and the [Potassco](https://potassco.org/) Answer Set Programming system. The demos require [Node JS](https://nodejs.org/en/) and [React](https://reactjs.org/).
-
-To make it easy to get started, a [Docker](https://www.docker.com/) container is provided with all of the dependencies pre-installed. Just run the following commands (and wait for Docker to build the container for you).
+To make it easy to get started, a [Docker image](https://hub.docker.com/repository/docker/anjsimmo/echelon) is provided with all of the dependencies pre-installed. First install [Docker](https://www.docker.com/), then run the following commands:
 
 ```
-docker build -t anjsimmo/echelon-vis .
-docker run -p 8000:8000 -p 5000:5000 -p 3000:3000 -it anjsimmo/echelon-vis
+docker pull anjsimmo/echelon
+docker run -p 8000:8000 -p 5000:5000 -p 3000:3000 -it anjsimmo/echelon
 ```
 
-When the Docker container is running, you can open the demos in your web browser (tested in Chome).
+Once the Docker container is running, you can open the demos in your web browser (tested in Chrome).
 
 ![Echelon Demo](echelon-demo.png?raw=true)
 
@@ -45,4 +43,15 @@ When the Docker container is running, you can open the demos in your web browser
 ├── LICENSE
 ├── README.md
 └── run_all.sh  <-- Generates notations + launches demos
+```
+
+# Contributing
+
+The easiest way to get started with Echelon is to use the Docker image; however, you may choose to install the dependencies manually if you prefer.
+
+Echelon depends on Python (managed using [Conda](https://docs.conda.io/en/latest/) environments) and the [Potassco](https://potassco.org/) Answer Set Programming system. The demos require [Node JS](https://nodejs.org/en/) and [React](https://reactjs.org/).
+
+To manually build the Docker image:
+```
+docker build -t anjsimmo/echelon .
 ```
