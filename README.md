@@ -9,8 +9,8 @@ Echelon depends on Python (managed using [Conda](https://docs.conda.io/en/latest
 To make it easy to get started, a [Docker](https://www.docker.com/) container is provided with all of the dependencies pre-installed. Just run the following commands (and wait for Docker to build the container for you).
 
 ```
-docker build -t echelon .
-docker run -p 8000:8000 -p 5000:5000 -p 3000:3000 -it echelon
+docker build -t anjsimmo/echelon-vis .
+docker run -p 8000:8000 -p 5000:5000 -p 3000:3000 -it anjsimmo/echelon-vis
 ```
 
 When the Docker container is running, you can open the demos in your web browser (tested in Chome).
